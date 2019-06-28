@@ -1,5 +1,2 @@
-試しに編集してみました
-
-yuheikiataが追加しました。
-
-testで追加しました。
+管理画面参照元
+https://laravel-admin.org/docs/#/
