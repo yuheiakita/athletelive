@@ -1,7 +1,3 @@
-試しに編集してみました
+管理画面参照元
+https://laravel-admin.org/docs/#/
 
-yuheikiataが追加しました。
-
-testで追加しました。
-
-てりーが追加しました！
