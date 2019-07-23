@@ -13,3 +13,26 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $("#submit").click(function () {
+        const url = "/posts/create";
+        $.ajax({
+            url: url,
+            data: {
+                text: $("#text").val()
+            },
+            method: "POST"
+        });
+        return false;
+    });
+    windows.Echo.channel('post')
+        .listen('Posted', (e) => {
+            $("#board").append('<li>' + e.post.text + '</li>');
+        });
+});
