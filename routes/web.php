@@ -1,4 +1,5 @@
 <?php
+use App\Events\OrderStatusUpdated;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,13 +12,39 @@
 |
 */
 
+class Order{
+
+     public $id;
+
+     public function __construct($id){
+         $this->id =$id;
+     }
+}
+
 Route::get('/', function () {
+
+
+
+    // event(new Order)
     return view('welcome');
 });
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('posts', 'PostController@index')->name('post.index');
-Route::post('posts/create', 'PostController@create')->name('post.create');
+
+// Route::get('/update', function(){
+
+//     OrderStatusUpdated::dispatch(new order(5));
+// });
+Route::get('/tasks', function () {
+    return Task::latest()->pluck('body');
+});
+
+Route::post('/tasks', function(){
+ return Task::forceCreate(request(['body']));
+});
+
+
+
 

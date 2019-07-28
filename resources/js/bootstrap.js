@@ -51,7 +51,14 @@ if (token) {
 window.Echo = new Echo
 ({
      broadcaster: 'pusher',
-    key: process.env.MIX_PUSHER_APP_KEY,
-    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    key: '4d7bcec9a4ed2c1352f0',
+    cluster: 'ap3',
      encrypted: true
- });
+});
+
+window.echo.channel('order')
+    .listen('OrderStatusUpdated', E => {
+        console.log('Order status with an id of'  +e.order.id+  'has been updated behind the sences.');
+        console.log(e);
+    });
+
